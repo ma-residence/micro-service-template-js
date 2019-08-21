@@ -1,0 +1,22 @@
+{
+  "name": "micro-service-template",
+  "version": "1.0.0",
+  "description": "Template de micro-service en Node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ma-residence/micro-service-template-js.git
+  },
+  "author": "Pascal Filipovicz<pascal.filipovicz@frozenk.net>",
+  "license": "PROPRIETARY",
+  "bugs": {
+    "url": "https://github.com/ma-residence/micro-service-template-js/issues"
+  },
+  "homepage": "https://github.com/ma-residence/micro-service-template-js#readme",
+  "dependencies": {
+    "client-oauth2": "^4.2.5"
+  }
+}
