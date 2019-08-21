@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ma-residence/micro-service-template-js.git
+    "url": "git+https://github.com/ma-residence/micro-service-template-js.git"
   },
   "author": "Pascal Filipovicz<pascal.filipovicz@frozenk.net>",
   "license": "PROPRIETARY",
