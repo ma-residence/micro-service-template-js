@@ -50,7 +50,7 @@ export default ({ app }: { app: express.Application }) => {
         return next(err);
     });
 
-    app.use((err, req, res) => {
+    app.use((err, req, res, next) => {
         res.status(err.status || 500);
         res.json({
             errors: {
