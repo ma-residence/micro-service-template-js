@@ -3,7 +3,8 @@
     "target": "es2018",
     "lib": [
       "es2018",
-      "esnext.asynciterable"
+      "esnext.asynciterable",
+      "dom"
     ],
     "typeRoots": [
       "./node_modules/@types",
@@ -24,7 +25,8 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./tests/**/*"
   ],
   "exclude": [
     "node_modules",

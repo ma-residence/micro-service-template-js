@@ -1,13 +1,12 @@
 import { Router } from "express";
-
-import mrApi from "./routes/mrApi";
-import { handleAPIDocs } from "./routes/apiDocs";
+import api from "./routes/api";
+import doc from "./routes/doc";
 
 export default () => {
     const router = Router();
 
-    mrApi(router);
-    handleAPIDocs(router);
+    doc(router);
+    api(router);
 
     return router;
 };

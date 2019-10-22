@@ -1,0 +1,51 @@
+# Comment utiliser ce template
+
+
+=============================================================
+
+
+# Micro Service **METTRE_LE_NOM_ICI**
+
+Micro-service ecrit en Node.js en se basant sur l'architecture "[Bullet Proof](https://softwareontheroad.com/ideal-nodejs-project-structure/#architecture)"
+
+## Installation
+
+### Prerequis
+
+Le projet "platform" doit etre a jour
+
+    git pull upstream master
+    cp docker-compose.yml docker-compose.yml.YYMMDDDD
+    cp docker-compose.yml.dist docker-compose.yml
+    cp docker-compose.override.yml docker-compose.override.yml.YYMMDDDD
+    cp docker-compose.override.yml.dist docker-compose.override.yml
+    cp .env .env.YYMMDDDD
+    cp .env.dist .env
+
+Pensez a reactiver les services dans le fichier .env et a recopier votre token Github.
+
+    make upstart
+
+### Installation et activation du micro-service preventgo
+
+1. Vous devez forker le [projet sur github](https://github.com/ma-residence/micro-service-preventgo)
+2. Vous pouvez maintenant lancer l'installation
+
+    make micro-service-preventgo-install
+
+3. Vous devez passer la variable WITH_PREVENTGO a true dans le fichier .env puis les variables suivantes :
+
+* PREVENTGO_HOST
+* PREVENTGO_LOGIN
+* PREVENTGO_PASSWORD
+
+Lancez ensuite les services
+
+    make upstart
+    make micro-service-preventgo-prepare
+
+## Utiliser le micro-service
+
+Un fichier postman_preventgo.json est inclus dans le dossier postman.
+
+© Le Résidentiel Numérique 2019

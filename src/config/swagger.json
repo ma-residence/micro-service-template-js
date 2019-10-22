@@ -1,29 +1,46 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0"
-  },
-  "host": "localhost:4001",
-  "basePath": "/",
-  "schemes": ["http"],
-  "produces": ["application/json"],
-  "paths": {
-    "/roles": {
-      "get": {
-        "tags": ["Roles"],
-        "summary": "Get all roles from MR API",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          }
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0"
+    },
+    "host": "localhost:4001",
+    "basePath": "/",
+    "schemes": ["http"],
+    "produces": ["application/json"],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": ["Status"],
+                "summary": "Check the application health",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Bad request"
+                    }
+                },
+                "content": {
+                    "application/json": {}
+                }
+            }
         },
-        "content": {
-          "application/json": {}
+        "/roles": {
+            "get": {
+                "tags": ["Roles"],
+                "summary": "Get the roles from the API",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Bad request"
+                    }
+                },
+                "content": {
+                    "application/json": {}
+                }
+            }
         }
-      }
     }
-  }
 }

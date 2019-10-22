@@ -1,0 +1,94 @@
+version: '2'
+
+services:
+    redis:
+        container_name: mr_redis
+        image: redis:3.0
+
+    api:
+        container_name: mr_api
+        image: maresidencefr/api:7.2-amqp
+        volumes_from:
+            - db
+            - redis
+            - elastic
+            - media
+        volumes:
+            - ./api:/srv/api
+            - ./doc:/srv/doc
+            - ./media:/srv/media
+        depends_on:
+            - "db"
+            - "redis"
+            - "elastic"
+            - "rabbitmq"
+            - "media"
+        environment:
+            - COMPOSER_GITHUB_OAUTH_TOKEN=${COMPOSER_GITHUB_OAUTH_TOKEN}
+
+    media:
+        container_name: mr_media
+        image: maresidencefr/media:7.2
+        volumes:
+            - ./media:/srv/media
+        environment:
+            - COMPOSER_GITHUB_OAUTH_TOKEN=${COMPOSER_GITHUB_OAUTH_TOKEN}
+
+    db:
+        container_name: mr_db
+        image: maresidencefr/db
+        volumes:
+            - ./api/docker/db/scripts:/docker-entrypoint-initdb.d/
+        environment:
+            POSTGRES_DB: mrdb
+
+    rabbitmq:
+        container_name: mr_rabbitmq
+        image: maresidencefr/rabbitmq:3.7.14
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+
+    elastic:
+        container_name: mr_elastic
+        image: maresidencefr/elastic
+        ports:
+            - "5601:5601"
+            - "9200:9200"
+            - "9300:9300"
+
+    place:
+        container_name: mr_place
+        image: maresidencefr/place
+        environment:
+            PORT: 8002
+
+    nginx:
+        container_name: mr_nginx
+        image: maresidencefr/nginx:template-js
+        ports:
+            - "80:80"
+        networks:
+            default:
+                aliases:
+                    - 'nginx'
+                    - 'dev.api.ensembl.fr'
+                    - 'dev.media.ensembl.fr'
+                    - 'dev.templatejs.ensembl.fr'
+        environment:
+            WITH_API: "true"
+            WITH_MEDIA: "true"
+            WITH_TEMPLATEJS: "true"
+
+    templatejs:
+        container_name: mr_templatejs
+        image: maresidencefr/micro-service-template-js:v1.0
+        volumes:
+            - ./:/srv/micro-service-template-js
+        ports:
+            - "3003:3003"
+        environment:
+            MR_API_ENDPOINT: "${API_ENDPOINT}"
+            MR_API_CLIENT_ID: "${TEMPLATEJS_API_CLIENT_ID}"
+            MR_API_CLIENT_SECRET: "${TEMPLATEJS_API_CLIENT_SECRET}"
+
