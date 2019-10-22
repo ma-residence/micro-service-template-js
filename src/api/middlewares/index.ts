@@ -1,5 +1,5 @@
-import isMrAuth from "./auth/isMrAuth";
+import auth from "./auth";
 
 export default {
-    isMrAuth
+    auth
 };

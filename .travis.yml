@@ -1,0 +1,40 @@
+language: node_js
+
+node_js:
+    - '10.15.2'
+
+sudo: required
+
+services:
+    - docker
+    - redis-server
+
+git:
+    submodules: false
+    depth: 10
+
+cache:
+    directories:
+        - node_modules
+
+env:
+    global:
+        - DOCKER_COMPOSE_VERSION=1.17.1
+        - ENV=travis
+    matrix:
+        - TEST_SUITE=lint
+        - TEST_SUITE=test
+
+matrix:
+    fast_finish: true
+
+before_install:
+    - npm i -g npm@v6.8.0 --ignore-scripts
+
+script:
+    - if [[ $TEST_SUITE = "lint" ]]; then npm run lint; fi
+    - if [[ $TEST_SUITE = "test" ]]; then ./scripts/script_test.sh; fi
+
+branches:
+    only:
+        - master
