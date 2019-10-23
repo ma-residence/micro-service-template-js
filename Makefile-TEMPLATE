@@ -44,3 +44,6 @@ lint: ## npm run lint:fix && lint:fix-test
 
 test: ## npm run test
 	$(APP) npm run test
+
+test-travis: ## npm run test:travis
+	$(APP) npm run test:travis

@@ -1,9 +1,3 @@
-# Comment utiliser ce template
-
-
-=============================================================
-
-
 # Micro Service **METTRE_LE_NOM_ICI**
 
 Micro-service ecrit en Node.js en se basant sur l'architecture "[Bullet Proof](https://softwareontheroad.com/ideal-nodejs-project-structure/#architecture)"
@@ -31,21 +25,20 @@ Pensez a reactiver les services dans le fichier .env et a recopier votre token G
 1. Vous devez forker le [projet sur github](https://github.com/ma-residence/micro-service-preventgo)
 2. Vous pouvez maintenant lancer l'installation
 
-    make micro-service-preventgo-install
+    make micro-service-**METTRE_LE_NOM_ICI**-install
 
-3. Vous devez passer la variable WITH_PREVENTGO a true dans le fichier .env puis les variables suivantes :
+3. Vous devez passer la variable WITH_**METTRE_LE_NOM_ICI** a true dans le fichier .env ainsi que les variables variables
+d'environnement suivantes
 
-* PREVENTGO_HOST
-* PREVENTGO_LOGIN
-* PREVENTGO_PASSWORD
+* ...**AJOUTER LES VARIABLES ICI**
 
 Lancez ensuite les services
 
     make upstart
-    make micro-service-preventgo-prepare
+    make micro-service-**METTRE_LE_NOM_ICI**-prepare
 
 ## Utiliser le micro-service
 
-Un fichier postman_preventgo.json est inclus dans le dossier postman.
+Un fichier postman_**METTRE_LE_NOM_ICI**.json est inclus dans le dossier postman.
 
 © Le Résidentiel Numérique 2019

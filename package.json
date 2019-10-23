@@ -5,14 +5,15 @@
   "main": "src/server.ts",
   "scripts": {
     "build": "tsc",
-    "heroku-postbuild": "npm run build",
     "dev": "nodemon",
-    "start": "tsc && node build/server.js",
+    "heroku-postbuild": "npm run build",
     "inspect": "nodemon --inspect src/server.ts",
-    "test": "jest",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
     "lint:fix": "eslint --ignore-path .gitignore --ext .ts --fix src/",
-    "lint:fix-test": "eslint --ignore-path .gitignore --ext .ts --fix tests/"
+    "lint:fix-test": "eslint --ignore-path .gitignore --ext .ts --fix tests/",
+    "start": "tsc && node build/server.js",
+    "test": "jest",
+    "test:travis": "jest"
   },
   "repository": {
     "type": "git",
