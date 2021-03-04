@@ -13,7 +13,7 @@
     "lint:fix-test": "eslint --ignore-path .gitignore --ext .ts --fix tests/",
     "start": "tsc && node build/server.js",
     "test": "jest",
-    "test:travis": "jest"
+    "test:ci": "jest --forceExit"
   },
   "repository": {
     "type": "git",
