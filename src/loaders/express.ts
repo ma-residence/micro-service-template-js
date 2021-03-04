@@ -30,7 +30,7 @@ export default ({ app }: { app: express.Application }) => {
             .end();
     });
 
-    app.use((err, req: Request, res: Response, next: NextFunction) => {
+    app.use((err, req: Request, res: Response) => {
         res.status(err.status || 500);
         res.json({
             errors: {
